@@ -1,22 +1,31 @@
+<label class="titulo">Cadastro de pessoa</label>
 
-    <fieldset id="fildsetCadastroPessoa" class="col-xs-12 col-md-12 col-lg-12">
-        
-        <div class="col-xs-4 col-md-4 col-lg-4">
-            Nome
-            <input id="inputNome" type="text" pInputText [(ngModel)]="novaPessoa.nome">
+<p-fieldset legend="Pessoa">
     
-            CPF
+    <div class="col-xs-4 col-md-4 col-lg-4">
+
+        <div class="formInput">
+            <label class="inputLabel12">Nome</label>
+            <input id="inputNome" type="text" pInputText [(ngModel)]="novaPessoa.nome">
+        </div>
+
+        <div class="formInput">
+            <label class="inputLabel12">CPF</label>
             <p-inputMask 
                 id="inputCpf"
                 mask="999.999.999-99" 
                 [(ngModel)]="novaPessoa.cpf"
                 placeholder="___.___.___-__">
             </p-inputMask>
-    
-            Email
-            <input id="inputEmail" type="text" pInputText [(ngModel)]="novaPessoa.email">
+        </div>
 
-            Data de nascimento
+        <div class="formInput">
+            <label class="inputLabel12">Email</label>
+            <input id="inputEmail" type="text" pInputText [(ngModel)]="novaPessoa.email">
+        </div>
+
+        <div class="formInput">
+            <label class="inputLabel12">Data de nascimento</label>
             <p-calendar 
                 inputId="inputDataDeNascimento"
                 yearRange="1900:2100"
@@ -25,7 +34,11 @@
                 dateFormat="dd/mm/yy" [showTime]="false" [maxDate]="hoje" [readonlyInput]="true">
             </p-calendar>
         </div>
+        
+    </div>
 
-    </fieldset>
+</p-fieldset>
 
-    <p-button label="Inserir" (click)="cadastrarPessoa();"></p-button>
+<br/>
+
+<p-button label="Salvar" (click)="cadastrarPessoa();"></p-button>

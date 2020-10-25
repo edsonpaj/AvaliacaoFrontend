@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+.inputLabel12{
+    font-size: 12px;
+    color: black;
+    margin: 5px;
+    margin-top: -19px;
+    float:left;
+}
+
+.titulo{
+    font-size: 25px;
+    color: black;
+    margin: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.formInput{
+    float:left;
+}
+
