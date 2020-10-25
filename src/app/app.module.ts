@@ -6,8 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import {InputTextModule} from 'primeng/inputtext';
-import {CalendarModule} from 'primeng/calendar';
+import { InputTextModule}  from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { ButtonModule } from 'primeng/button';
+import { InputMaskModule } from 'primeng/inputmask';
 
 
 import { AppComponent } from './app.component';
@@ -25,7 +27,9 @@ import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.compo
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
-    CalendarModule
+    CalendarModule,
+    ButtonModule,
+    InputMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
