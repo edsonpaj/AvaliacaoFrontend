@@ -12,9 +12,11 @@ import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
 
-
 import { AppComponent } from './app.component';
 import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
+
+import { PessoaService } from './services/pessoa.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.compo
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -33,7 +36,9 @@ import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.compo
     InputMaskModule,
     FieldsetModule
   ],
-  providers: [],
+  providers: [
+    PessoaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
