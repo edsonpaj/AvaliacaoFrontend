@@ -1,0 +1,28 @@
+<div class="p-fluid p-grid p-formgrid">
+    <div class="p-field p-col-4 p-md-4">
+        Nome
+        <input id="inputNome" name="inputNome" [(ngModel)]="novaPessoa.nome"> 
+
+        CPF
+        <input id="inputCpf" name="inputCpf" [(ngModel)]="novaPessoa.cpf"> 
+
+        Email
+        <input id="inputEmail" name="inputEmail" [(ngModel)]="novaPessoa.email"> 
+        
+    </div>
+</div>
+
+        Data de nascimento
+        <p-calendar 
+            inputId="inputDataDeNascimento"
+            yearRange="1900:2030"
+            [(ngModel)]="novaPessoa.dataDeNascimento"
+            [showIcon]="false" [monthNavigator]="true" [yearNavigator]="true"
+            dateFormat="dd/mm/yy" [showTime]="false" [maxDate]="hoje">
+        </p-calendar>
+
+
+
+
+
+<p-button label="Inserir" (click)="cadastrarPessoa();"></p-button>
