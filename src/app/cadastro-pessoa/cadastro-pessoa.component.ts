@@ -26,14 +26,13 @@ export class CadastroPessoaComponent implements OnInit {
       (requestResult: RequestResult) => {
         if(requestResult.result == "OK"){
           alert('Pessoa Cadastrada');
+          PessoaService.novaPessoaCadastrada.emit(requestResult.returnObject);
         }else{
           alert('ERRO: '+requestResult.messageError);
         }
       }
     );
   }
-
-  
 
   ngOnInit(): void {
   }

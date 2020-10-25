@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { catchError } from 'rxjs/operators';
@@ -12,13 +12,19 @@ import { RequestResult } from '../model/request-result.model';
 })
 export class PessoaService {
 
-  private urlPrefix: string = 'http://localhost:8080/pessoa';
+  private urlBasePessoa: string = 'http://localhost:8080/pessoa';
+
+  @Output() static novaPessoaCadastrada = new EventEmitter();
   
   constructor(private http: HttpClient) {
   }
 
   save(novaPessoa: Pessoa): Observable<RequestResult> {
-    return this.http.post<RequestResult>(this.urlPrefix, novaPessoa).pipe(catchError(this.serverError));
+    return this.http.post<RequestResult>(this.urlBasePessoa, novaPessoa).pipe(catchError(this.serverError));
+  }
+
+  getAll(): Observable<RequestResult> {
+    return this.http.get<RequestResult>(this.urlBasePessoa).pipe(catchError(this.serverError));
   }
 
   serverError(err: any) {

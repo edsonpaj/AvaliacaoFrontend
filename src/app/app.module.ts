@@ -11,17 +11,20 @@ import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
+import {TableModule} from 'primeng/table';
 
 import { AppComponent } from './app.component';
 import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
 
 import { PessoaService } from './services/pessoa.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ListagemPessoaComponent } from './listagem-pessoa/listagem-pessoa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CadastroPessoaComponent
+    CadastroPessoaComponent,
+    ListagemPessoaComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     CalendarModule,
     ButtonModule,
     InputMaskModule,
-    FieldsetModule
+    FieldsetModule,
+    TableModule
   ],
   providers: [
     PessoaService
