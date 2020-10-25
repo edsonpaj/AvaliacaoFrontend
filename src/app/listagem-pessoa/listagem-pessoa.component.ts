@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Pessoa } from '../model/pessoa.model';
 import { RequestResult } from '../model/request-result.model';
 import { PessoaService } from '../services/pessoa.service';
+
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'listagem-pessoa',
@@ -10,6 +12,10 @@ import { PessoaService } from '../services/pessoa.service';
   styleUrls: ['./listagem-pessoa.component.css']
 })
 export class ListagemPessoaComponent implements OnInit {
+
+  @ViewChild('dt') table: Table;
+  pessoas: Pessoa[];
+  loadingLista: boolean = true;
 
   constructor(private pessoaService: PessoaService) {
     PessoaService.novaPessoaCadastrada.subscribe(
@@ -19,7 +25,6 @@ export class ListagemPessoaComponent implements OnInit {
     );
   }
 
-  pessoas: Pessoa[];
 
   ngOnInit(): void {
     this.carregarListagemCompletaPessoas();
@@ -30,6 +35,7 @@ export class ListagemPessoaComponent implements OnInit {
       (requestResult: RequestResult) => {
         if (requestResult.result == "OK") {
           this.pessoas = requestResult.returnObject;
+          this.loadingLista = false;
         } else {
           alert('ERRO: ' + requestResult.messageError);
         }
