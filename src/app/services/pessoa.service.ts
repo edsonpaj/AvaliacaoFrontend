@@ -31,8 +31,11 @@ export class PessoaService {
   }
 
   editar(pessoaUpdate: Pessoa): Observable<RequestResult> {
-    console.log(pessoaUpdate);
     return this.http.put<RequestResult>(this.urlBasePessoa, pessoaUpdate).pipe(catchError(this.serverError));
+  }
+
+  inativar(id: number): Observable<RequestResult> {
+    return this.http.put<RequestResult>(this.urlBasePessoa+"/inative/"+id, null).pipe(catchError(this.serverError));
   }
 
   excluir(id: number): Observable<RequestResult> {
@@ -40,7 +43,6 @@ export class PessoaService {
   }
 
   serverError(err: any) {
-    console.error('sever error:', err);
     return observableThrowError(err || 'backend server error');
   }
 

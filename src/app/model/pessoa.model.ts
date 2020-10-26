@@ -5,4 +5,5 @@ export class Pessoa {
   email: string;
   dataNascimento: Date;
   fotoBase64: string;
+  ativo: boolean;
 }

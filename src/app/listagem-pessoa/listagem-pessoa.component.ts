@@ -58,7 +58,7 @@ export class ListagemPessoaComponent implements OnInit {
 
   excluirPessoa(pess: Pessoa){
     if(confirm('Tem certeza que deseja excluir '+pess.nome+'?')){
-      this.pessoaService.excluir(pess.id).subscribe(
+      this.pessoaService.inativar(pess.id).subscribe(
         (requestResult: RequestResult) => {
           if (requestResult.result == "OK") {
             PessoaService.pessoaExcluida.emit(pess);
