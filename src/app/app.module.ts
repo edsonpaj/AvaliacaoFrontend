@@ -12,6 +12,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
 import {TableModule} from 'primeng/table';
+import {PanelModule} from 'primeng/panel';
+
 
 import { AppComponent } from './app.component';
 import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
@@ -38,7 +40,8 @@ import { ListagemPessoaComponent } from './listagem-pessoa/listagem-pessoa.compo
     ButtonModule,
     InputMaskModule,
     FieldsetModule,
-    TableModule
+    TableModule,
+    PanelModule
   ],
   providers: [
     PessoaService
