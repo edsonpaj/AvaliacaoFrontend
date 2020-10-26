@@ -2,6 +2,23 @@
     <p-fieldset legend="Pessoa">
         
         <div class="col-xs-4 col-md-4 col-lg-4">
+            
+            <div style="clear: both; width: 100%; margin-bottom: 30px;">
+                <div width="110px;" height="150px;" style="float: left;">
+                    <img src="{{pessoa.fotoBase64}}" width="110px;" height="150px;" *ngIf="pessoa.fotoBase64 != null && pessoa.fotoBase64 != ''"/> 
+                </div>
+                <p-fileUpload 
+                    #uploader 
+                    mode="basic"
+                    [multiple]="false" 
+                    accept="image/*" 
+                    maxFileSize="1000000"
+                    [showUploadButton]="false"
+                    [showCancelButton]="false" 
+                    (onSelect)="onSelectImage($event.files)"
+                    chooseLabel="Foto">
+                </p-fileUpload>
+            </div>
     
             <div class="formInput">
                 <label class="inputLabel12">Nome</label>
@@ -34,12 +51,19 @@
                 </p-calendar>
                 <i class="pi pi-calendar"></i>
             </div>
+
+            <div class="formInput" style="margin-top: 20px;">
+    
+            </div>
             
         </div>
     
     </p-fieldset>
-    
+
     <br/>
     
     <p-button label="Salvar" (click)="salvarPessoa();"></p-button>
+    &nbsp;&nbsp;
+    <p-button label="Limpar" (click)="limpar();"></p-button>
+
 </p-panel>

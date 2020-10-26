@@ -13,6 +13,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
 import {TableModule} from 'primeng/table';
 import {PanelModule} from 'primeng/panel';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 import { AppComponent } from './app.component';
@@ -41,7 +42,8 @@ import { ListagemPessoaComponent } from './listagem-pessoa/listagem-pessoa.compo
     InputMaskModule,
     FieldsetModule,
     TableModule,
-    PanelModule
+    PanelModule,
+    FileUploadModule
   ],
   providers: [
     PessoaService

@@ -58,4 +58,18 @@ export class CadastroPessoaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  limpar(){
+    this.pessoa = new Pessoa;
+  }
+
+  onSelectImage(event: any) {
+    const file = event[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+     this.pessoa.fotoBase64 = reader.result.toString();
+    };
+  }
+
+
 }

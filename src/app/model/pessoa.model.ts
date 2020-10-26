@@ -4,4 +4,5 @@ export class Pessoa {
   cpf: string;
   email: string;
   dataNascimento: Date;
+  fotoBase64: string;
 }
