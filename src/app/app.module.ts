@@ -14,6 +14,8 @@ import { FieldsetModule } from 'primeng/fieldset';
 import {TableModule} from 'primeng/table';
 import {PanelModule} from 'primeng/panel';
 import {FileUploadModule} from 'primeng/fileupload';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 
 import { AppComponent } from './app.component';
@@ -22,12 +24,15 @@ import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.compo
 import { PessoaService } from './services/pessoa.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ListagemPessoaComponent } from './listagem-pessoa/listagem-pessoa.component';
+import { MessageComponent } from './message/message.component';
+import { MenssageiroService } from './services/menssageiro.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroPessoaComponent,
-    ListagemPessoaComponent
+    ListagemPessoaComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +48,13 @@ import { ListagemPessoaComponent } from './listagem-pessoa/listagem-pessoa.compo
     FieldsetModule,
     TableModule,
     PanelModule,
-    FileUploadModule
+    FileUploadModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [
-    PessoaService
+    PessoaService,
+    MenssageiroService
   ],
   bootstrap: [AppComponent]
 })

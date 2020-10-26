@@ -1,0 +1,8 @@
+.messageBox{
+    height: 40px; 
+    position: fixed; 
+    bottom:10%;
+    width:65%;
+    z-index: 99999;
+    opacity: 1;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Pessoa } from '../model/pessoa.model';
 import { RequestResult } from '../model/request-result.model';
+import { MenssageiroService } from '../services/menssageiro.service';
 import { PessoaService } from '../services/pessoa.service';
 
 
@@ -36,9 +37,9 @@ export class CadastroPessoaComponent implements OnInit {
           if(requestResult.result == "OK"){
             this.pessoa = new Pessoa;
             PessoaService.pessoaModificada.emit(requestResult.returnObject);
-            alert('Pessoa ATUALIZADA');
+            MenssageiroService.exibirMenssagemSucesso.emit("Pessoa atalizada com sucesso.");
           }else{
-            alert('ERRO: '+requestResult.messageError);
+            MenssageiroService.exibirMenssagemErro.emit(requestResult.messageError);
           }
         });
     }else{
@@ -47,9 +48,9 @@ export class CadastroPessoaComponent implements OnInit {
           if(requestResult.result == "OK"){
             this.pessoa = new Pessoa;
             PessoaService.novaPessoaCadastrada.emit(requestResult.returnObject);
-            alert('Pessoa CADASTRADA');
+            MenssageiroService.exibirMenssagemSucesso.emit("Pessoa cadastrada com sucesso.");
           }else{
-            alert('ERRO: '+requestResult.messageError);
+            MenssageiroService.exibirMenssagemErro.emit(requestResult.messageError);
           }
         });
     }

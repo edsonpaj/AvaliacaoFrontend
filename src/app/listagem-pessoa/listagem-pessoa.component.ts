@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { Pessoa } from '../model/pessoa.model';
 import { RequestResult } from '../model/request-result.model';
+import { MenssageiroService } from '../services/menssageiro.service';
 import { PessoaService } from '../services/pessoa.service';
 
 
@@ -46,7 +47,7 @@ export class ListagemPessoaComponent implements OnInit {
           this.pessoas = requestResult.returnObject;
           this.loadingLista = false;
         } else {
-          alert('ERRO: ' + requestResult.messageError);
+          MenssageiroService.exibirMenssagemErro.emit(requestResult.messageError);
         }
       });
   }
@@ -61,9 +62,9 @@ export class ListagemPessoaComponent implements OnInit {
         (requestResult: RequestResult) => {
           if (requestResult.result == "OK") {
             PessoaService.pessoaExcluida.emit(pess);
-            alert('Pessoa excluida!');
+            MenssageiroService.exibirMenssagemWarn.emit("Pessoa excluida com sucesso!");
           } else {
-            alert('ERRO: ' + requestResult.messageError);
+            MenssageiroService.exibirMenssagemErro.emit(requestResult.messageError);
           }
         });
     }
