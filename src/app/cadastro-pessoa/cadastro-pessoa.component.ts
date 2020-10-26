@@ -12,26 +12,47 @@ import { PessoaService } from '../services/pessoa.service';
 })
 export class CadastroPessoaComponent implements OnInit {
 
-  novaPessoa: Pessoa;
+  pessoa: Pessoa;
 
   hoje: Date = new Date();
 
   constructor(private pessoaService: PessoaService) { 
-    this.novaPessoa = new Pessoa;
+    
+    this.pessoa = new Pessoa;
+
+    PessoaService.iniciarEdicaoPessoa.subscribe(
+      (pessoaParaEdicao: Pessoa) =>{
+        //problema de conversão de data
+        pessoaParaEdicao.dataNascimento = new Date(pessoaParaEdicao.dataNascimento);
+        this.pessoa = Object.assign(new Pessoa, pessoaParaEdicao);
+      });
+
   }
 
-  public cadastrarPessoa(){
-    console.log(this.novaPessoa);
-    this.pessoaService.save(this.novaPessoa).subscribe(
-      (requestResult: RequestResult) => {
-        if(requestResult.result == "OK"){
-          alert('Pessoa Cadastrada');
-          PessoaService.novaPessoaCadastrada.emit(requestResult.returnObject);
-        }else{
-          alert('ERRO: '+requestResult.messageError);
-        }
-      }
-    );
+  public salvarPessoa(){
+    if(this.pessoa.id != null && this.pessoa.id != 0){
+      this.pessoaService.editar(this.pessoa).subscribe(
+        (requestResult: RequestResult) => {
+          if(requestResult.result == "OK"){
+            this.pessoa = new Pessoa;
+            PessoaService.pessoaModificada.emit(requestResult.returnObject);
+            alert('Pessoa ATUALIZADA');
+          }else{
+            alert('ERRO: '+requestResult.messageError);
+          }
+        });
+    }else{
+      this.pessoaService.save(this.pessoa).subscribe(
+        (requestResult: RequestResult) => {
+          if(requestResult.result == "OK"){
+            this.pessoa = new Pessoa;
+            PessoaService.novaPessoaCadastrada.emit(requestResult.returnObject);
+            alert('Pessoa CADASTRADA');
+          }else{
+            alert('ERRO: '+requestResult.messageError);
+          }
+        });
+    }
   }
 
   ngOnInit(): void {

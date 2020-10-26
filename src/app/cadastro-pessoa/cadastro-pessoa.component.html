@@ -6,7 +6,7 @@
 
         <div class="formInput">
             <label class="inputLabel12">Nome</label>
-            <input id="inputNome" type="text" pInputText [(ngModel)]="novaPessoa.nome">
+            <input id="inputNome" type="text" pInputText [(ngModel)]="pessoa.nome">
         </div>
 
         <div class="formInput">
@@ -14,14 +14,14 @@
             <p-inputMask 
                 id="inputCpf"
                 mask="999.999.999-99" 
-                [(ngModel)]="novaPessoa.cpf"
+                [(ngModel)]="pessoa.cpf"
                 placeholder="___.___.___-__">
             </p-inputMask>
         </div>
 
         <div class="formInput">
             <label class="inputLabel12">Email</label>
-            <input id="inputEmail" type="text" pInputText [(ngModel)]="novaPessoa.email">
+            <input id="inputEmail" type="text" pInputText [(ngModel)]="pessoa.email">
         </div>
 
         <div class="formInput">
@@ -29,7 +29,7 @@
             <p-calendar 
                 inputId="inputDataDeNascimento"
                 yearRange="1900:2100"
-                [(ngModel)]="novaPessoa.dataNascimento"
+                [(ngModel)]="pessoa.dataNascimento"
                 [showIcon]="false" [monthNavigator]="true" [yearNavigator]="true"
                 dateFormat="dd/mm/yy" [showTime]="false" [maxDate]="hoje" [readonlyInput]="true">
             </p-calendar>
@@ -42,4 +42,4 @@
 
 <br/>
 
-<p-button label="Salvar" (click)="cadastrarPessoa();"></p-button>
+<p-button label="Salvar" (click)="salvarPessoa();"></p-button>

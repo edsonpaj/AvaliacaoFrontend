@@ -15,6 +15,7 @@ export class PessoaService {
   private urlBasePessoa: string = 'http://localhost:8080/pessoa';
 
   @Output() static novaPessoaCadastrada = new EventEmitter();
+  @Output() static iniciarEdicaoPessoa = new EventEmitter();
   @Output() static pessoaModificada = new EventEmitter();
   @Output() static pessoaExcluida = new EventEmitter();
   
@@ -30,6 +31,7 @@ export class PessoaService {
   }
 
   editar(pessoaUpdate: Pessoa): Observable<RequestResult> {
+    console.log(pessoaUpdate);
     return this.http.put<RequestResult>(this.urlBasePessoa, pessoaUpdate).pipe(catchError(this.serverError));
   }
 

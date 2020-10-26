@@ -44,7 +44,7 @@ currentPageReportTemplate="Exibindo de {first} a {last} de um total de {totalRec
             <td>{{pess.email}}</td>
             <td>{{pess.dataNascimento | date: 'dd / MM / yyyy'}}</td>
             <td>
-                <p-button icon="pi pi-pencil" styleClass="p-button-warning" (click)="editarPessoa(pess)"></p-button>
+                <p-button icon="pi pi-pencil" styleClass="p-button-warning" (click)="iniciarEdicaoPessoa(pess)"></p-button>
                 &nbsp;
                 <p-button icon="pi pi-trash" styleClass="p-button-danger" (click)="excluirPessoa(pess)"></p-button>
             </td>

@@ -51,15 +51,8 @@ export class ListagemPessoaComponent implements OnInit {
       });
   }
 
-  editarPessoa(pess: Pessoa){
-    this.pessoaService.editar(pess).subscribe(
-      (requestResult: RequestResult) => {
-        if (requestResult.result == "OK") {
-          PessoaService.pessoaModificada.emit(pess);
-        } else {
-          alert('ERRO: ' + requestResult.messageError);
-        }
-      });
+  iniciarEdicaoPessoa(pess: Pessoa){
+    PessoaService.iniciarEdicaoPessoa.emit(pess);
   }
 
   excluirPessoa(pess: Pessoa){
@@ -68,6 +61,7 @@ export class ListagemPessoaComponent implements OnInit {
         (requestResult: RequestResult) => {
           if (requestResult.result == "OK") {
             PessoaService.pessoaExcluida.emit(pess);
+            alert('Pessoa excluida!');
           } else {
             alert('ERRO: ' + requestResult.messageError);
           }
