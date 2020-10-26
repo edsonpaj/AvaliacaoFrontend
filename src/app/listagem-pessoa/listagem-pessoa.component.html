@@ -8,7 +8,6 @@ dataKey="id"
 [showCurrentPageReport]="true"
 [rowsPerPageOptions]="[10,25,50]"
 [loading]="loadingLista"
-styleClass="p-datatable-customers"
 currentPageReportTemplate="Exibindo de {first} a {last} de um total de {totalRecords}"
 [filterDelay]="0"
 [globalFilterFields]="['nome','cpf','email','dataNascimento']"
@@ -20,19 +19,23 @@ currentPageReportTemplate="Exibindo de {first} a {last} de um total de {totalRec
             <th pSortableColumn="cpf">CPF <p-sortIcon field="cpf"></p-sortIcon></th>
             <th pSortableColumn="email">EMAIL <p-sortIcon field="email"></p-sortIcon></th>
             <th pSortableColumn="dataNascimento">Data de nascimento <p-sortIcon field="codataNascimentode"></p-sortIcon></th>
+            <th></th>
         </tr>
-        <th>
-            <input pInputText type="text" (input)="dt.filter($event.target.value, 'nome', 'startsWith')" placeholder="Nome" class="p-column-filter inputFilter">
-        </th>
-        <th>
-            <input pInputText type="text" (input)="dt.filter($event.target.value, 'cpf', 'startsWith')" placeholder="CPF" class="p-column-filter inputFilter">
-        </th>
-        <th>
-            <input pInputText type="text" (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email" class="p-column-filter inputFilter">
-        </th>
-        <th>
-            <input pInputText type="text" (input)="dt.filter($event.target.value, 'dataNascimento', 'startsWith')" placeholder="Data Nascimento" class="p-column-filter inputFilter">
-        </th>
+        <tr>
+            <th>
+                <input pInputText type="text" (input)="dt.filter($event.target.value, 'nome', 'startsWith')" placeholder="Nome" class="p-column-filter inputFilter">
+            </th>
+            <th>
+                <input pInputText type="text" (input)="dt.filter($event.target.value, 'cpf', 'startsWith')" placeholder="CPF" class="p-column-filter inputFilter">
+            </th>
+            <th>
+                <input pInputText type="text" (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email" class="p-column-filter inputFilter">
+            </th>
+            <th>
+                <input pInputText type="text" (input)="dt.filter($event.target.value, 'dataNascimento', 'startsWith')" placeholder="Data Nascimento" class="p-column-filter inputFilter">
+            </th>
+            <th></th>
+        </tr>
     </ng-template>
     <ng-template pTemplate="body" let-pess>
         <tr>
@@ -40,6 +43,11 @@ currentPageReportTemplate="Exibindo de {first} a {last} de um total de {totalRec
             <td>{{pess.cpf}}</td>
             <td>{{pess.email}}</td>
             <td>{{pess.dataNascimento | date: 'dd / MM / yyyy'}}</td>
+            <td>
+                <p-button icon="pi pi-pencil" styleClass="p-button-warning" (click)="editarPessoa(pess)"></p-button>
+                &nbsp;
+                <p-button icon="pi pi-trash" styleClass="p-button-danger" (click)="excluirPessoa(pess)"></p-button>
+            </td>
         </tr>
     </ng-template>
 </p-table>

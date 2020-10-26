@@ -15,6 +15,8 @@ export class PessoaService {
   private urlBasePessoa: string = 'http://localhost:8080/pessoa';
 
   @Output() static novaPessoaCadastrada = new EventEmitter();
+  @Output() static pessoaModificada = new EventEmitter();
+  @Output() static pessoaExcluida = new EventEmitter();
   
   constructor(private http: HttpClient) {
   }
@@ -25,6 +27,14 @@ export class PessoaService {
 
   getAll(): Observable<RequestResult> {
     return this.http.get<RequestResult>(this.urlBasePessoa).pipe(catchError(this.serverError));
+  }
+
+  editar(pessoaUpdate: Pessoa): Observable<RequestResult> {
+    return this.http.put<RequestResult>(this.urlBasePessoa, pessoaUpdate).pipe(catchError(this.serverError));
+  }
+
+  excluir(id: number): Observable<RequestResult> {
+    return this.http.delete<RequestResult>(this.urlBasePessoa+'/'+id).pipe(catchError(this.serverError));
   }
 
   serverError(err: any) {
